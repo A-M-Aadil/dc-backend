@@ -1,0 +1,19 @@
+# Ignore environment config
+.env
+
+# Ignore node modules
+node_modules/
+
+# Optional: other common Flutter/Node/VSCode files to ignore
+.DS_Store
+*.log
+
+# Flutter build files
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+
+# IDE and OS
+.vscode/
+.idea/
