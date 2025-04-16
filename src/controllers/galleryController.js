@@ -29,18 +29,22 @@ exports.getGalleryImages = async (req, res) => {
             populate: 'category'
         };
 
+        // Always use paginate, even when no filters are applied
         const result = await GalleryImage.paginate(query, options);
-
+        
         res.status(200).json({
             data: result.docs,
             pagination: {
                 total: result.totalDocs,
                 page: result.page,
                 limit: result.limit,
-                totalPages: result.totalPages
+                totalPages: result.totalPages,
+                hasNextPage: result.hasNextPage,
+                hasPrevPage: result.hasPrevPage
             }
         });
     } catch (err) {
+        console.error('Error fetching gallery images:', err);
         res.status(500).json({ error: 'Failed to fetch gallery images' });
     }
 };
